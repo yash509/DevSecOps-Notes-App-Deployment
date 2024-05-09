@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-website-deployment
+spec:
+  replicas: 2  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: notes-webapp
+  template:
+    metadata:
+      labels:
+        app: notes-webapp
+    spec:
+      containers:
+      - name: notes-webapp
+        image: yash5090/notes-webapp:latest
+        ports:
+        - containerPort: 5000
