@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Checkout from Git') {                        
             steps {                                       
-                git branch: 'main', url: ''
+                git branch: 'main', url: 'https://github.com/yash509/DevSecOps-Notes-App-Deployment.git'
             }
         }
         stage('Deployments') {
