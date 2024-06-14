@@ -249,6 +249,18 @@ pipeline {
                 } 
             } 
         } 
+        
+        stage('Perform Penetration Testing Using OWASP ZAP') { 
+            steps { 
+                script { 
+                    sh "zap-cli start" 
+                    sh "zap-cli open-url http://localhost:8090" 
+                    sh "zap-cli active-scan --recursive http://localhost:8090" 
+                    sh "zap-cli report -o zap-report.html -f html" 
+                } 
+            } 
+        } 
+        
         stage('Deployment Done') {
             steps {
                 echo 'Deployed Succcessfully...'
